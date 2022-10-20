@@ -28,7 +28,7 @@ class EmployeTableSeeder extends Seeder
         $employes->password = Hash::make('1');
         $employes->joining_date = date("Y-m-d h:i:s");
         $employes->date_birth = date('1998-07-13');
-        $employes->status = 1;
+        $employes->status = 'A';
         $employes->address = 'حي تعاونية الامير عبد القادر';
         $employes->gender_id = Gender::all()->unique()->random()->id;
         $employes->nationalitie_id = Nationalitie::all()->unique()->random()->id;
