@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Create Student
+    Create Employe
 @stop
 
 @section('css')
@@ -13,23 +13,24 @@
    <!-- Content Header (Page header) -->
    <section class="content-header">
      <h1>
-       Students
+       Employes
      </h1>
      <ol class="breadcrumb">
        <li><a href="{{ route('dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-       <li><a href="{{ route('students.index') }}">Students</a></li>
-       <li class="active">Create Student</li>
+       <li><a href="{{ route('employes.index') }}">Employes</a></li>
+       <li class="active">Create Employe</li>
      </ol>
    </section>
 
    <section class="content">
       <div class="box box-primary">
           <div class="box-header">
-              <h3 class="box-title">Create Student</h3>
+              <h3 class="box-title">Create Employe</h3>
           </div>
             <div class="box-body">
-                    <form method="POST" action="{{ route('students.store') }}" autocomplete="off" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('employes.store') }}" autocomplete="off">
                       @csrf
+
                         {{-- 1 --}}
                         <div class="row">
                            <div class="col-md-6">
@@ -66,6 +67,25 @@
                               </div>
                             </div>
                         </div>
+                        {{-- End 2 --}}
+
+                        {{-- 2 --}}
+                          <div class="row">
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" class="form-control" required>
+                                    <span class="help-block with-errors"></span>
+                                 </div>
+                             </div>
+                             <div class="col-md-6">
+                                 <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" name="password" required>
+                                    <span class="help-block with-errors"></span>
+                                 </div>
+                             </div>
+                          </div>
                         {{-- End 2 --}}
 
                         {{-- 3 --}}
@@ -120,59 +140,49 @@
                         <div class="row">
                              <div class="col-md-3">
                                 <div class="form-group">
-                                   <label>Grades</label>
-                                   <select name="grade_id" class="form-control">
-                                      <option value="" selected disabled>Select Grade</option>
-                                      @foreach ($grades as $grade)
-                                        <option value="{{ $grade->id }}"> {{ $grade->name }}</option>
+                                   <label>Specializations</label>
+                                   <select name="specialization_id" class="form-control" required>
+                                      <option value="" selected disabled>Select Specialization</option>
+                                      @foreach ($specializations as $specialization)
+                                          <option value="{{ $specialization->id }}"> {{ $specialization->name }}</option>
                                       @endforeach
                                    </select>
                                    <span class="help-block with-errors"></span>
                                 </div>
-                             </div>
-                             <div class="col-md-3">
-                                <div class="form-group">
-                                   <label>Classrooms</label>
-                                   <select name="class_id" class="form-control"></select>
-                                   <span class="help-block with-errors"></span>
-                                </div>
-                             </div>
-                             <div class="col-md-3">
-                                <div class="form-group">
-                                   <label>Sections</label>
-                                   <select name="section_id" class="form-control"></select>
-                                   <span class="help-block with-errors"></span>
-                                </div>
-                             </div>
-                             <div class="col-md-3">
-                              <div class="form-group">
-                                 <label>Academic Year</label>
-                                 <select name="academic_year" class="form-control" required>
-                                    <option value="" selected disabled>Select Academic Year</option>
-                                    @php
-                                       $current_year = date("Y");
-                                    @endphp
-                                    @for($year=$current_year; $year<=$current_year + 4 ;$year++)
-                                       <option value="{{ $year }}">{{ $year }}</option>
-                                    @endfor
-                                 </select>
-                                 <span class="help-block with-errors"></span>
                               </div>
-                            </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                   <label>Religion</label>
+                                   <select name="religion_id" class="form-control" required>
+                                      <option value="" selected disabled>Select Religion</option>
+                                      @foreach ($religions as $religion)
+                                          <option value="{{ $religion->id }}"> {{ $religion->name }}</option>
+                                      @endforeach
+                                   </select>
+                                   <span class="help-block with-errors"></span>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label>Joining Date</label>
+                                  <input type="date" class="form-control" name="joining_date" value="{{ date('Y-m-d') }}" required>
+                                  <span class="help-block with-errors"></span>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label>Address</label>
+                                  <input type="text" class="form-control" name="address" required>
+                                  <span class="help-block with-errors"></span>
+                                </div>
+                              </div>
                         </div>
                         {{-- End 4 --}}
-
-                        <div class="row">
-                            <div class="col-md-12">
-                              <label>Images <span class="text-danger">*</span></label>
-                              <input type="file" accept="image/*" name="photos[]" multiple>
-                            </div>
-                        </div>
 
                         <br><br>
                         <div class="form-group" style="text-align:center">
                             <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o"></i> Saving Data</button>
-                            <a href="{{ route('students.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
+                            <a href="{{ route('employes.index') }}" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
                         </div>
                     </form>
                 </div>
