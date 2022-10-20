@@ -7,7 +7,6 @@ use App\Models\Gender;
 use App\Models\Nationalitie;
 use App\Models\Blood;
 use App\Models\Specialization;
-use App\Models\Religion;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -36,7 +35,6 @@ class EmployeController extends Controller
         $data['nationalities'] = Nationalitie::all();
         $data['bloods'] = Blood::all();
         $data['specializations'] = Specialization::all();
-        $data['religions'] = Religion::all();
         return view('pages.employes.create',$data);
     }
 
@@ -63,7 +61,6 @@ class EmployeController extends Controller
             $employes->nationalitie_id = $request->nationalitie_id;
             $employes->blood_id = $request->blood_id;
             $employes->specialization_id = $request->specialization_id;
-            $employes->religion_id = $request->religion_id;
             $employes->save();
 
             DB::commit(); // insert data
@@ -101,7 +98,6 @@ class EmployeController extends Controller
         $data['nationalities'] = Nationalitie::all();
         $data['bloods'] = Blood::all();
         $data['specializations'] = Specialization::all();
-        $data['religions'] = Religion::all();
         $employes =  Employe::findOrFail($id);
         return view('pages.employes.edit',$data,compact('employes'));
     }
@@ -128,7 +124,6 @@ class EmployeController extends Controller
             $employes->nationalitie_id = $request->nationalitie_id;
             $employes->blood_id = $request->blood_id;
             $employes->specialization_id = $request->specialization_id;
-            $employes->religion_id = $request->religion_id;
             $employes->save();
             return redirect()->route('employes.index');
         }

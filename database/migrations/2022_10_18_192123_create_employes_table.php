@@ -30,8 +30,6 @@ return new class extends Migration
             $table->foreign('blood_id')->references('id')->on('bloods')->onDelete('cascade');
             $table->bigInteger('specialization_id')->unsigned();
             $table->foreign('specialization_id')->references('id')->on('specializations')->onDelete('cascade');
-            $table->bigInteger('religion_id')->unsigned();
-            $table->foreign('religion_id')->references('id')->on('religions')->onDelete('cascade');
             $table->timestamps();
         });
     }

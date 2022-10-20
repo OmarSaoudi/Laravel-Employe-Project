@@ -1,19 +1,19 @@
 <!-- Delete Student -->
-<div class="modal fade" id="DeleteStudent{{ $student->id }}">
+<div class="modal fade" id="DeleteEmploye{{ $employe->id }}">
   <div class="modal-dialog">
     <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title">Delete Student</h4>
+      <h4 class="modal-title">Delete Employe</h4>
     </div>
     <div class="modal-body">
-      <form action="{{ route('students.destroy','test') }}" method="post">
+      <form action="{{ route('employes.destroy','test') }}" method="post">
       @csrf
       {{ method_field('delete') }}
         <div class="modal-body">
           <p>Are sure of the deleting process ?</p><br>
-          <input type="hidden" name="id"  value="{{ $student->id }}">
-          <input class="form-control" name="name" value="{{ $student->name }}" type="text" readonly>
+          <input type="hidden" name="id"  value="{{ $employe->id }}">
+          <input class="form-control" name="name" value="{{ $employe->name }}" type="text" readonly>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-danger">Save changes</button>

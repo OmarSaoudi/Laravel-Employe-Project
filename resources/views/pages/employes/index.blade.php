@@ -60,7 +60,9 @@
                 <td>{{ $employe->date_birth }}</td>
                 <td>{{ $employe->joining_date }}</td>
                 <td>
-
+                    @if($employe->status == 'A') Active
+                    @else Inactive
+                    @endif
                 </td>
                 <td>{{ $employe->gender->name }}</td>
                 <td>{{ $employe->nationalitie->name }}</td>
@@ -102,7 +104,7 @@
 </div>
 
 <!-- Delete All -->
-<div class="modal fade" id="delete_all_e">
+  <div class="modal fade" id="delete_all_e">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
