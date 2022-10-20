@@ -146,7 +146,7 @@ class EmployeController extends Controller
         return redirect()->route('employes.index');
     }
 
-    public function delete_all_e($request)
+    public function delete_all_e(Request $request)
     {
         $delete_all_id = explode(",", $request->delete_all_id);
         Employe::whereIn('id', $delete_all_id)->delete();
